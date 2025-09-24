@@ -1,0 +1,149 @@
+name: 🎨 UI/UX Improvement
+description: Request improvements to the user interface or user experience
+title: "[UI/UX] "
+labels: ["ui/ux", "enhancement", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request improvements to the user interface, design, or user experience of the Activities System.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area needs improvement?
+      description: Select the part of the system you'd like to improve
+      options:
+        - Login Page
+        - Activities List/Display
+        - Registration Form
+        - Navigation/Menu
+        - Search and Filters
+        - Teacher Dashboard
+        - Mobile Experience
+        - Overall Design/Styling
+        - Accessibility
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-issue
+    attributes:
+      label: Current Issue or Limitation
+      description: What's wrong with the current design or user experience?
+      placeholder: "The activities list is hard to read because the text is too small and the colors don't provide enough contrast..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: Proposed Improvement
+      description: How would you like it to work or look instead?
+      placeholder: "Make the text larger, use better color contrast, and organize activities in a card-based layout..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-group
+    attributes:
+      label: Who will benefit from this improvement?
+      description: Which users will this improvement help the most?
+      options:
+        - Teachers
+        - Students
+        - Both Teachers and Students
+        - Administrators
+        - All Users
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-impact
+    attributes:
+      label: User Impact
+      description: How will this improvement help users? What will be easier or better?
+      placeholder: "Teachers will be able to find activities faster, students will have a clearer view of available options..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: devices
+    attributes:
+      label: Which devices should support this improvement?
+      description: Consider where users will interact with this feature
+      multiple: true
+      options:
+        - Desktop Computer
+        - Tablet
+        - Mobile Phone
+        - All Devices
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples or References
+      description: Do you have examples of good design or similar features elsewhere?
+      placeholder: "I like how [other school website] displays their activities in a grid with clear icons..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this improvement?
+      options:
+        - High - Significantly impacts daily use
+        - Medium - Would improve user experience
+        - Low - Nice to have enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility Considerations
+      description: Are there any accessibility needs this improvement should address?
+      placeholder: "Need better contrast for visually impaired users, keyboard navigation support..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this improvement is successful?
+      placeholder: |
+        - Text is readable on both desktop and mobile
+        - Color contrast meets accessibility standards
+        - Activities are easy to scan and find
+        - Users can complete tasks 50% faster
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other details, constraints, or considerations
+      placeholder: "Should match the school's brand colors, needs to work with existing browser versions..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have described the current problem clearly
+          required: true
+        - label: I have explained how the improvement will help users
+          required: true
+        - label: I have considered different devices and accessibility needs
+          required: true

@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 General Questions
+    url: https://github.com/bfayez/skills-expand-your-team-with-copilot/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 📚 Documentation
+    url: https://github.com/bfayez/skills-expand-your-team-with-copilot/blob/main/docs/how-to-develop.md
+    about: Read the development guide and documentation
+  - name: 🆘 Urgent Technical Support
+    url: mailto:support@mergington.edu
+    about: For urgent issues that need immediate attention, contact IT support directly

@@ -1,0 +1,121 @@
+name: 📝 General Request
+description: For requests that don't fit into other categories
+title: "[GENERAL] "
+labels: ["general", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for requests that don't fit into the other specific categories.
+
+  - type: textarea
+    id: request-summary
+    attributes:
+      label: Request Summary
+      description: Briefly describe what you need help with
+      placeholder: "I need help with..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: request-category
+    attributes:
+      label: Request Category
+      description: Which area is this request most related to?
+      options:
+        - System Configuration
+        - Training/Documentation
+        - Integration with Other Systems
+        - Reporting/Analytics
+        - Performance Issues
+        - General Consultation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed-description
+    attributes:
+      label: Detailed Description
+      description: Provide as much detail as possible about your request
+      placeholder: "I need to understand how to... The current situation is... What I'm trying to achieve is..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-situation
+    attributes:
+      label: Current Situation
+      description: What is the current state or what are you currently doing?
+      placeholder: "Right now we manually handle this by... The current process is..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-outcome
+    attributes:
+      label: Desired Outcome
+      description: What would you like the end result to be?
+      placeholder: "I would like to be able to... The ideal solution would..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency Level
+      description: How quickly do you need help with this?
+      options:
+        - High - Blocking important work
+        - Medium - Important but not blocking
+        - Low - Can wait for convenient time
+    validations:
+      required: true
+
+  - type: textarea
+    id: resources-tried
+    attributes:
+      label: Resources Already Tried
+      description: What have you already tried or looked at?
+      placeholder: "I've already checked the documentation, tried Google search, asked colleagues..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints or Limitations
+      description: Are there any constraints or limitations we should know about?
+      placeholder: "Must work with existing systems, limited budget, specific timeline requirements..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: Success Criteria
+      description: How will we know this request has been successfully completed?
+      placeholder: "The request will be successful when... I will know it's working if..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that might be helpful
+      placeholder: "Related issues, background information, specific examples..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have checked that this request doesn't fit better in another template category
+          required: true
+        - label: I have provided enough detail for someone to understand and help with my request
+          required: true

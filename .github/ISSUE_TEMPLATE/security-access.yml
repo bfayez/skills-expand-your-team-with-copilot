@@ -1,0 +1,181 @@
+name: 🔒 Security & Access Request
+description: Report security issues or request access control changes
+title: "[SECURITY] "
+labels: ["security", "access-control", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for security-related issues, access control problems, or requests for permission changes.
+        
+        **⚠️ IMPORTANT:** For urgent security issues, contact IT directly instead of using this form.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Type of Security Request
+      description: What kind of security or access issue are you reporting?
+      options:
+        - Access Control Issue
+        - Password Problems
+        - User Account Management
+        - Permission Changes
+        - Security Vulnerability
+        - Suspicious Activity
+        - Data Privacy Concern
+        - Other Security Issue
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity Level
+      description: How severe is this security issue?
+      options:
+        - Critical - System is compromised or data at risk
+        - High - Major security flaw or access issue
+        - Medium - Security improvement needed
+        - Low - Minor security enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: Describe the security issue or access problem in detail
+      placeholder: "Teachers can access student data they shouldn't see, or passwords are not being validated properly..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-users
+    attributes:
+      label: Affected Users
+      description: Who is affected by this security issue?
+      placeholder: |
+        - All teachers
+        - Specific users: teacher1@mergington.edu, teacher2@mergington.edu
+        - All students
+        - System administrators
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current Security Behavior
+      description: How does the system currently handle this security aspect?
+      placeholder: "Currently, any logged-in teacher can register any student for any activity..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Security Behavior
+      description: How should the system handle security for this scenario?
+      placeholder: "Teachers should only be able to register students from their own classes or with proper authorization..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: access-requirements
+    attributes:
+      label: Access Requirements (if applicable)
+      description: If this is an access control request, specify the exact permissions needed
+      placeholder: |
+        User: mrodriguez@mergington.edu
+        Requested Access: Ability to create new activities
+        Justification: Art teacher who needs to add art-related activities
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce (for vulnerabilities)
+      description: If reporting a security flaw, how can it be reproduced?
+      placeholder: |
+        1. Log in as a teacher
+        2. Navigate to student registration
+        3. Notice that you can see/modify data you shouldn't have access to
+    validations:
+      required: false
+
+  - type: textarea
+    id: potential-impact
+    attributes:
+      label: Potential Impact
+      description: What could happen if this security issue is not addressed?
+      placeholder: "Unauthorized access to student data, privacy violations, data corruption..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-solution
+    attributes:
+      label: Suggested Solution
+      description: Do you have ideas for how to fix this security issue?
+      placeholder: "Add role-based permissions, implement proper authentication checks, require additional confirmation..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: data-involved
+    attributes:
+      label: Type of Data Involved
+      description: What kind of data is affected by this security issue?
+      multiple: true
+      options:
+        - Student Personal Information
+        - Student Activity Data
+        - Teacher Information
+        - Login Credentials
+        - System Configuration
+        - No Sensitive Data
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: discovery-date
+    attributes:
+      label: When was this discovered?
+      description: When did you first notice this security issue?
+      placeholder: "Today, Last week, Been ongoing for months..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: temporary-workaround
+    attributes:
+      label: Temporary Workaround
+      description: Have you found any temporary ways to work around this issue?
+      placeholder: "Manually checking permissions, using alternative process, etc."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information about this security issue
+      placeholder: "Related to recent changes, affects specific browsers, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Security Confirmation
+      description: Please confirm the following
+      options:
+        - label: I understand this is a security-sensitive issue
+          required: true
+        - label: I have not shared details of this vulnerability publicly
+          required: true
+        - label: I am authorized to request these access changes
+          required: false

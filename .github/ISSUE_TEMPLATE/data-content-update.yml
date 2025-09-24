@@ -1,0 +1,170 @@
+name: 📊 Data & Content Update
+description: Request updates to content, data, or information displayed in the system
+title: "[DATA] "
+labels: ["data-update", "content", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request updates to content, data, or information displayed in the Activities System.
+
+  - type: dropdown
+    id: update-type
+    attributes:
+      label: Type of Update
+      description: What kind of data or content needs to be updated?
+      options:
+        - Activity Information
+        - Student Information
+        - Teacher Information
+        - System Messages/Text
+        - Help Documentation
+        - School Information
+        - Other Content
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: Current Content/Data
+      description: What is the current content that needs to be changed?
+      placeholder: |
+        Current activity description: "Learn basic chess moves"
+        Current schedule: "Mondays, 3:00 PM"
+        Current contact: "old-teacher@mergington.edu"
+    validations:
+      required: true
+
+  - type: textarea
+    id: updated-content
+    attributes:
+      label: New/Updated Content
+      description: What should the content be changed to? Provide exact text/data
+      placeholder: |
+        New activity description: "Learn advanced chess strategies and participate in tournaments"
+        New schedule: "Mondays and Wednesdays, 3:15 PM - 4:45 PM"
+        New contact: "new-teacher@mergington.edu"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Update
+      description: Why does this content need to be changed?
+      placeholder: "The teacher changed, the activity expanded, information was outdated..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Update Scope
+      description: How extensive is this update?
+      options:
+        - Single Item - One activity, student, or piece of content
+        - Multiple Items - Several related items
+        - System-Wide - Changes affecting the entire system
+        - Bulk Update - Many items need the same change
+    validations:
+      required: true
+
+  - type: textarea
+    id: bulk-data
+    attributes:
+      label: Bulk Data (if applicable)
+      description: If updating multiple items, provide the data in a structured format
+      placeholder: |
+        Activity Name | New Schedule | New Description
+        Chess Club | Mon/Wed 3:15-4:45 | Advanced chess strategies
+        Drama Club | Tue/Thu 3:30-5:00 | Theater arts and performance
+        Science Club | Fri 3:15-4:30 | Science experiments and projects
+    validations:
+      required: false
+
+  - type: input
+    id: effective-date
+    attributes:
+      label: Effective Date
+      description: When should this change take effect?
+      placeholder: "Immediately, Start of next semester, January 15th, etc."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: verification-needed
+    attributes:
+      label: Verification Required?
+      description: Do you need to review the changes before they go live?
+      options:
+        - "Yes - I need to review before publishing"
+        - "No - Changes can be applied directly"
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation-rules
+    attributes:
+      label: Data Validation Requirements
+      description: Are there any specific rules or formats the data must follow?
+      placeholder: |
+        - Email addresses must be @mergington.edu
+        - Times must be in 12-hour format
+        - Activity names must be unique
+    validations:
+      required: false
+
+  - type: textarea
+    id: backup-instructions
+    attributes:
+      label: Backup/Rollback Plan
+      description: Should we backup the current data in case we need to revert?
+      placeholder: "Please backup current activity data before making changes..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency Level
+      description: How quickly do you need this update completed?
+      options:
+        - Urgent - Needed immediately
+        - High - Needed within 24 hours
+        - Medium - Needed within a week
+        - Low - Can be done when convenient
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact-assessment
+    attributes:
+      label: Impact Assessment
+      description: Who will be affected by this change and how?
+      placeholder: "Students currently registered will be notified of schedule change, teachers need updated rosters..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Any other important information about this data update
+      placeholder: "Related changes needed, dependencies, special considerations..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Data Quality Confirmation
+      description: Please confirm the following about your data update
+      options:
+        - label: I have double-checked all data for accuracy
+          required: true
+        - label: I have the authority to make these changes
+          required: true
+        - label: I understand this will affect current users
+          required: true
