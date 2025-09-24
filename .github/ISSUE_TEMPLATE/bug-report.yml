@@ -1,0 +1,99 @@
+name: 🐛 Bug Report
+description: Report a bug or problem with the High School Activities System
+title: "[BUG] "
+labels: ["bug", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out this form to help us understand and fix the issue.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Bug Summary
+      description: A clear and concise description of what the bug is
+      placeholder: "Example: Students can't sign up for Chess Club"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which area is affected?
+      description: Select the main area where you're experiencing the problem
+      options:
+        - Student Registration
+        - Teacher Login
+        - Activity Display
+        - Activity Management
+        - User Interface
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Tell us exactly what you did when the bug occurred
+      placeholder: |
+        1. Go to the activities page
+        2. Click on 'Chess Club'
+        3. Fill in student email: student@mergington.edu
+        4. Click 'Register'
+        5. See error message
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened instead?
+      placeholder: "The student should be successfully registered for the activity"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened? Include any error messages you see
+      placeholder: "Error message appeared: 'Failed to sign up. Please try again.'"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this issue?
+      description: This helps us prioritize the fix
+      options:
+        - Critical - System is completely broken
+        - High - Major feature doesn't work
+        - Medium - Minor feature issue
+        - Low - Cosmetic or enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help us understand the problem
+      placeholder: "This happens only with certain activities, only affects some students, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have checked that this bug hasn't already been reported
+          required: true
+        - label: I have provided clear steps to reproduce the issue
+          required: true

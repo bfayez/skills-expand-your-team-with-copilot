@@ -1,0 +1,141 @@
+name: 📅 Activity Management Request
+description: Request changes to activities, schedules, or student registrations
+title: "[ACTIVITY] "
+labels: ["activity-management", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request changes to activities, schedules, student registrations, or other activity-related updates.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Type of Request
+      description: What kind of activity management task do you need help with?
+      options:
+        - Add New Activity
+        - Update Existing Activity
+        - Delete Activity
+        - Change Activity Schedule
+        - Bulk Register Students
+        - Bulk Remove Students
+        - Update Activity Description
+        - Other Activity Change
+    validations:
+      required: true
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: Which activity is this request about? (Or name for new activity)
+      placeholder: "Example: Chess Club, Drama Club, Science Olympiad"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-details
+    attributes:
+      label: Current Activity Details
+      description: If updating an existing activity, what are the current details?
+      placeholder: |
+        Current Schedule: Mondays and Fridays, 3:15 PM - 4:45 PM
+        Current Description: Learn strategies and compete in chess tournaments
+        Current Participants: 8 students
+    validations:
+      required: false
+
+  - type: textarea
+    id: requested-changes
+    attributes:
+      label: Requested Changes
+      description: What specific changes do you need? Be as detailed as possible
+      placeholder: |
+        New Schedule: Tuesdays and Thursdays, 3:30 PM - 5:00 PM
+        Updated Description: Advanced chess strategies and tournament preparation
+        Add participants: student1@mergington.edu, student2@mergington.edu
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Change
+      description: Why is this change needed?
+      placeholder: "The current time conflicts with another popular activity, and we need to accommodate more students..."
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Implementation Deadline
+      description: When do you need this change to be completed?
+      placeholder: "Example: Before next Monday, End of this week, ASAP"
+    validations:
+      required: false
+
+  - type: textarea
+    id: student-list
+    attributes:
+      label: Student List (if applicable)
+      description: If this involves adding/removing students, provide their email addresses
+      placeholder: |
+        Add:
+        - john.doe@mergington.edu
+        - jane.smith@mergington.edu
+        
+        Remove:
+        - old.student@mergington.edu
+    validations:
+      required: false
+
+  - type: textarea
+    id: new-activity-details
+    attributes:
+      label: New Activity Details (if adding new activity)
+      description: For new activities, provide all the details needed
+      placeholder: |
+        Description: Brief description of what the activity involves
+        Schedule: Days and times (e.g., "Mondays, 3:15 PM - 4:45 PM")
+        Maximum Participants: How many students can join
+        Teacher/Supervisor: Who will supervise this activity
+        Location: Where will it take place
+    validations:
+      required: false
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact Level
+      description: How many people will this change affect?
+      options:
+        - High - Affects many students and teachers
+        - Medium - Affects one activity group
+        - Low - Minor change with minimal impact
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional Notes
+      description: Any other information that would be helpful
+      placeholder: "Special considerations, related changes needed, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      description: Please confirm the following
+      options:
+        - label: I have double-checked all student email addresses for accuracy
+          required: false
+        - label: I have considered the impact this change will have on students
+          required: true
+        - label: I have the authority to make this change or have approval
+          required: true

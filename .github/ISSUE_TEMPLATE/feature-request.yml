@@ -1,0 +1,121 @@
+name: ✨ Feature Request
+description: Request a new feature or enhancement for the High School Activities System
+title: "[FEATURE] "
+labels: ["enhancement", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please fill out this form to help us understand your needs.
+
+  - type: input
+    id: feature-title
+    attributes:
+      label: Feature Title
+      description: A clear and concise title for the feature you want
+      placeholder: "Example: Add ability to set maximum participants per activity"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Feature Category
+      description: What type of feature is this?
+      options:
+        - Student Management
+        - Activity Management
+        - User Interface Improvement
+        - Reporting & Analytics
+        - Security & Access Control
+        - Data Export/Import
+        - Communication & Notifications
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Description
+      description: What problem does this feature solve? What challenge are you facing?
+      placeholder: "Currently, we can't limit how many students can join an activity, which leads to overcrowding..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the feature you'd like to see implemented
+      placeholder: "Add a 'Maximum Participants' field when creating activities, and prevent registration when limit is reached..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this feature is complete? List specific requirements
+      placeholder: |
+        - Teachers can set a maximum participant limit for each activity
+        - Students see how many spots are available
+        - Registration is blocked when activity is full
+        - Teachers can view waiting lists for full activities
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature for your daily work?
+      options:
+        - High - Critical for our daily operations
+        - Medium - Would significantly improve our workflow
+        - Low - Nice to have enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: User Stories
+      description: Describe who will use this feature and how
+      placeholder: |
+        As a teacher, I want to set participant limits so that activities don't become overcrowded.
+        As a student, I want to see available spots so I know if I can still register.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered any alternative approaches or workarounds?
+      placeholder: "We currently manually track this in a spreadsheet, but it's error-prone..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information, screenshots, or examples that would help
+      placeholder: "Similar features in other school systems, specific use cases, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched for similar feature requests
+          required: true
+        - label: I have provided clear acceptance criteria
+          required: true
+        - label: I have described the problem this feature solves
+          required: true
