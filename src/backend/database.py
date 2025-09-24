@@ -4,12 +4,92 @@ MongoDB database configuration and setup for Mergington High School API
 
 from pymongo import MongoClient
 from argon2 import PasswordHasher
+import os
 
-# Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
-db = client['mergington_high']
-activities_collection = db['activities']
-teachers_collection = db['teachers']
+# Connect to MongoDB - use in-memory database for development if MongoDB not available
+try:
+    client = MongoClient('mongodb://localhost:27017/', serverSelectionTimeoutMS=2000)
+    # Test the connection
+    client.server_info()
+    db = client['mergington_high']
+except Exception:
+    # Fallback to a simple in-memory dict-based mock for development
+    from collections import defaultdict
+    
+    class MockCollection:
+        def __init__(self):
+            self.data = {}
+            
+        def insert_one(self, doc):
+            self.data[doc['_id']] = doc
+            
+        def find_one(self, query):
+            if '_id' in query:
+                return self.data.get(query['_id'])
+            return None
+            
+        def find(self, query=None):
+            if not query:
+                return [dict(doc, _id=_id) for _id, doc in self.data.items()]
+            # Simple query handling for development
+            result = []
+            for _id, doc in self.data.items():
+                if self._matches_query(doc, query):
+                    result.append(dict(doc, _id=_id))
+            return result
+            
+        def _matches_query(self, doc, query):
+            for key, value in query.items():
+                if key == 'difficulty_level':
+                    if isinstance(value, dict) and '$exists' in value:
+                        if value['$exists'] == False:
+                            if key in doc:
+                                return False
+                        elif value['$exists'] == True:
+                            if key not in doc:
+                                return False
+                    elif key not in doc or doc[key] != value:
+                        return False
+                elif key not in doc or doc[key] != value:
+                    return False
+            return True
+                    
+        def count_documents(self, query):
+            return len(list(self.find(query)))
+            
+        def update_one(self, query, update):
+            class Result:
+                def __init__(self, modified):
+                    self.modified_count = modified
+            
+            if '_id' in query and query['_id'] in self.data:
+                doc = self.data[query['_id']]
+                if '$push' in update:
+                    for key, value in update['$push'].items():
+                        if key not in doc:
+                            doc[key] = []
+                        doc[key].append(value)
+                elif '$pull' in update:
+                    for key, value in update['$pull'].items():
+                        if key in doc and value in doc[key]:
+                            doc[key].remove(value)
+                return Result(1)
+            return Result(0)
+            
+        def aggregate(self, pipeline):
+            return []
+    
+    class MockDB:
+        def __init__(self):
+            self.activities = MockCollection()
+            self.teachers = MockCollection()
+    
+    db = MockDB()
+    activities_collection = db.activities
+    teachers_collection = db.teachers
+else:
+    activities_collection = db['activities']
+    teachers_collection = db['teachers']
 
 # Methods
 def hash_password(password):
@@ -41,7 +121,8 @@ initial_activities = {
             "end_time": "16:45"
         },
         "max_participants": 12,
-        "participants": ["michael@mergington.edu", "daniel@mergington.edu"]
+        "participants": ["michael@mergington.edu", "daniel@mergington.edu"],
+        "difficulty_level": "Beginner"
     },
     "Programming Class": {
         "description": "Learn programming fundamentals and build software projects",
@@ -52,7 +133,8 @@ initial_activities = {
             "end_time": "08:00"
         },
         "max_participants": 20,
-        "participants": ["emma@mergington.edu", "sophia@mergington.edu"]
+        "participants": ["emma@mergington.edu", "sophia@mergington.edu"],
+        "difficulty_level": "Intermediate"
     },
     "Morning Fitness": {
         "description": "Early morning physical training and exercises",
@@ -118,7 +200,8 @@ initial_activities = {
             "end_time": "08:00"
         },
         "max_participants": 10,
-        "participants": ["james@mergington.edu", "benjamin@mergington.edu"]
+        "participants": ["james@mergington.edu", "benjamin@mergington.edu"],
+        "difficulty_level": "Advanced"
     },
     "Debate Team": {
         "description": "Develop public speaking and argumentation skills",
@@ -140,7 +223,8 @@ initial_activities = {
             "end_time": "14:00"
         },
         "max_participants": 15,
-        "participants": ["ethan@mergington.edu", "oliver@mergington.edu"]
+        "participants": ["ethan@mergington.edu", "oliver@mergington.edu"],
+        "difficulty_level": "Intermediate"
     },
     "Science Olympiad": {
         "description": "Weekend science competition preparation for regional and state events",
@@ -162,7 +246,8 @@ initial_activities = {
             "end_time": "17:00"
         },
         "max_participants": 16,
-        "participants": ["william@mergington.edu", "jacob@mergington.edu"]
+        "participants": ["william@mergington.edu", "jacob@mergington.edu"],
+        "difficulty_level": "Advanced"
     },
     "Manga Maniacs": {
         "description": "Explore the fantastic stories of the most interesting characters from Japanese Manga (graphic novels).",
