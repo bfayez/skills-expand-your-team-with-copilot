@@ -66,3 +66,31 @@ These dependencies will be installed when you run `pip install -r requirements.t
 
 > [!IMPORTANT]
 > All data is stored in memory, which means data will be reset when the server restarts.
+
+## Teacher Support
+
+### Issue Templates
+
+This repository includes comprehensive issue templates designed to help teachers request changes and improvements without needing to modify code directly. These templates are located in `.github/ISSUE_TEMPLATE/` and include:
+
+- **Bug Report** - For system problems and errors
+- **Feature Request** - For new functionality requests  
+- **Activity Management** - For activity-related changes (schedules, registrations, etc.)
+- **UI/UX Improvement** - For interface and experience improvements
+- **Data & Content Update** - For content and information updates
+- **Security & Access** - For security issues and access control
+- **General Request** - For other requests not covered above
+
+Each template is designed to provide Copilot coding agents with sufficient context to implement changes without additional clarification.
+
+### Using Issue Templates
+
+Teachers can access these templates by:
+
+1. Going to the [Issues page](../issues)
+2. Clicking "New Issue" 
+3. Selecting the appropriate template
+4. Filling out all required fields with detailed information
+5. Submitting the issue
+
+See the [Issue Template README](../.github/ISSUE_TEMPLATE/README.md) for detailed guidance on using each template.
